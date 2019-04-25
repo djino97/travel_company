@@ -1,0 +1,92 @@
+
+{% extends "base.html" %}
+{% load poll_extras %}
+{% block title %}Главная страница турфирмы{% endblock %}
+{% block content %}
+    <p style="text-align: center; font-size: 20px; font-weight: bold">Куда бы съездить?</p>
+    <div class="vertical_search">
+    <form ng-controller="AppCtrl as ctrl" ng-app="MyApp"  class="search"  action="." method="get">
+       <input type="search" placeholder="Страна" name="country">
+        <input type="search" placeholder="Сезон" name="season">
+        <md-datepicker  ng-click="ctrl.myDate" md-hide-icons="triangle" md-placeholder="Enter date"></md-datepicker>
+        <input type="search" placeholder="Дата отправления" ng-model="this.ctrl.myDate|date:'yyyy-MM-dd'" name="date">
+       <input type="submit"  value="Поиск" class='submit_tur'>
+    </form>
+    </div>
+    <div class="hotel">
+        {% for n in count_hotel %}
+            <div style="float: left;">
+                <img style="width: 300px; height: 200px;margin-left: 10px; border-radius: 10px;"
+                     src="{{ img_hotel|dict_value_or_null:n }}">
+                <p style="text-align: center"><a href=" {{ idhotel|get_url:n }}"> {{ idhotel|get_name_hotel:n }}</a></p>
+                <div class="star_hotel">
+                    {% for star in fiew_star %}
+                        <h>*</h>
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+     {% if tours_country_search %}
+         {% for n in count %}
+            <div class="catalog">
+                <div style="">
+                    <img style="border-radius: 10px;" class="tour" src="{{ img_tour|dict_value_or_null:n }}"/>
+                </div>
+                <div style="margin-left: 20px">
+                    <p>
+                        <a href="{{ tours_country_search|get_url:n }}">{{ tours_country_search|get_name_tour:n }}</a>
+                    </p>
+                    <p>{{ coast_tours| dict_value_or_null:n }}₽</p>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+     {% elif count %}
+        <h1>Список открытых туров</h1>
+        <div>
+        {% for n in count %}
+            <div class="catalog">
+                <div class="block_tour">
+                    <div style="">
+                        <img style="border-radius: 10px;" class="tour" src="{{ img_tour|dict_value_or_null:n }}"/>
+                    </div>
+                    <div style="margin-left: 20px">
+                        <p><a href="{{ tours|get_url:n }}">{{ tours|get_name_tour:n }}</a></p>
+                        <p>{{ coast_tours| dict_value_or_null:n }}₽</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <h>{{ empty }}</h>
+         </div>
+    {% endif %}
+    </div>
+    <script>
+    (function () {
+  'use strict';
+
+  angular.module('MyApp', ['ngMaterial', 'ngMessages']).config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('YYYY-MM-DD') : '';
+    };
+
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'YYYY-MM-DD', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
+
+    </script>
+{% endblock %}

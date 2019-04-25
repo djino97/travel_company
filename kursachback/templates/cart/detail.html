@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load poll_extras %}
+{% block title %}
+    Ваша корзина для покупок
+{% endblock %}
+{% block content %}
+    <h1>Ваша корзина для покупок</h1>
+    <table class="table_cart">
+        <thead>
+        <tr>
+            <th>Изображение</th>
+            <th>Тур</th>
+            <th>Количество</th>
+            <th>Удалить</th>
+            <th>Стоимость</th>
+            <th>Итого</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with tour=item.tour %}
+                <tr class="tr_cart">
+                    <td>
+                        <a href="{{ tour.get_absolute_url }}">
+                            <img class='img_tour' src="{{tour|cart_img_tour}}">
+                        </a>
+                    </td>
+                    <td>{{ tour.name_tour }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url "cart:cart_remove" tour.id_tour%}">Удалить</a></td>
+                    <td class="num">{{ item.price }} ₽</td>
+                    <td class="num">{{ item.total_price }} ₽</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Итоговая стоимость</td>
+            <td colspan="4"></td>
+            <td class="num">{{ cart.get_total_price }}₽</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url "tours:main" %}" class="button light">Перейти на главную</a>
+        <a href="{% url "orders:order_create" %}" class="button">
+          Забронировать
+        </a>
+    </p>
+{% endblock %}

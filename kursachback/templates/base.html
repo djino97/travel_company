@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/basestile.css" %}" >
+     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-messages.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+</head>
+<body>
+<div id="header">
+    <span class="logo">Турфирма</span>
+    {% if request.user.is_authenticated %}
+        <ul class="menu">
+              <li {% if section == 'main' %}class="selected"{% endif %}>
+            <a href="{% url 'main' %}">
+                {% if section == 'main' %}
+                    Главная
+                  {% else %}
+                    На главную!
+                {% endif %}
+            </a>
+        </ul>
+      {% else %}
+         <ul class="menu">
+             <li {% if section == 'main' %}class="selected"{% endif %}>
+                <a href="{% url 'main' %}">
+                  {% if section == 'main' %}
+                      Главная
+                    {% else %}
+                      На главную!
+                  {% endif %}
+                </a>
+             </li>
+        </ul>
+    {% endif %}
+    <span class="user">
+        {% if request.user.is_authenticated %}
+            Добро пожаловать {{ request.user.first_name}},
+            <a href="{% url 'logout' %}">Выйти</a>
+            <span class="cart">
+               {% with total_items=cart|length %}
+                   {% if cart|length > 0 %}
+                          Избранные:
+                          <a href="{% url "cart:cart_detail" %}">
+                          {{ total_items }} item{{ total_items|pluralize }},
+                           {{ cart.get_total_price }}₽
+                            </a>
+        {% else %}
+            У вас нет заказов
+        {% endif %}
+    {% endwith %}
+    </span>
+        {% else %}
+            <a href="{% url 'login' %}">Войти</a>
+             <a href="{% url 'register' %}">или Зарегистрироваться</a>
+        {% endif %}
+    </span>
+</div>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
