@@ -1,0 +1,1 @@
+'web: gunicorn kursachback.wsgi --log-file -' 
