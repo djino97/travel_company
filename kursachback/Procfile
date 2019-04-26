@@ -1,1 +1,1 @@
-web: gunicorn kursachback.wsgi:application --log-file -
+web: gunicorn kursachback.wsgi --log-file -
