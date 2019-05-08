@@ -84,12 +84,12 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'turfirma',
-        'ENGINE': 'mysql.connector.django',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'heroku_a6fca33c3cc6106',
+        'ENGINE': 'CLEARDB_DATABASE_URL',
+        'USER': 'bb04d450dd01d7',
+        'PASSWORD': '1c53481c',
+        'HOST': 'eu-cdbr-west-02.cleardb.net',
+      #  'PORT': '3306',
     }
 }
 
