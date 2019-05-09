@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from django.core.urlresolvers import reverse_lazy
-import django_heroku
+import django_heroku, dj-database-url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 DATABASES = {
     'default': {
+        dj_database_url.parse('mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106?reconnect=true', conn_max_age=600)
         'NAME': 'heroku_a6fca33c3cc6106',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'bb04d450dd01d7',
