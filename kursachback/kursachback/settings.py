@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 #DATABASES = {
     #'default': {
-       DATABASES['default'] = dj_database_url.config('mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106?reconnect=true')
+       DATABASES['default'] = dj_database_url.config('mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net')
         #'NAME': 'heroku_a6fca33c3cc6106',
         #'ENGINE': 'django.db.backends.mysql',
         #'USER': 'bb04d450dd01d7',
