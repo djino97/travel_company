@@ -95,8 +95,8 @@ GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
         #'PASSWORD': '1c53481c',
         #'HOST': 'eu-cdbr-west-02.cleardb.net',
         #'PORT': '3306',
-   }
-}
+  # }
+#}
 
 
 # Password validation
