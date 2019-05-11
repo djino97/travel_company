@@ -85,7 +85,11 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 #DATABASES = {
     #'default': {
 DATABASES['default'] = dj_database_url.config(default = 'mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106?reconnect=true')
-        #'NAME': 'heroku_a6fca33c3cc6106',
+DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')         
+    #'NAME': 'heroku_a6fca33c3cc6106',
         #'ENGINE': 'django.db.backends.mysql',
         #'USER': 'bb04d450dd01d7',
         #'PASSWORD': '1c53481c',
