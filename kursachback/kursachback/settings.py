@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 from django.core.urlresolvers import reverse_lazy
 import django_heroku, dj_database_url
-from urlparse import urlparse
+from urllib import parse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 #DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 #GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
-urlparse.uses_netloc.append('mysql')
+parse.uses_netloc.append('mysql')
 
 DATABASES = {
    'default': {
