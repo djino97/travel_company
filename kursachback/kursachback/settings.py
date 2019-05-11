@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASE = {'default': dj_database_url.config() }
+#DATABASE = {'default': dj_database_url.config() }
 DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
