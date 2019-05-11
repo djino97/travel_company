@@ -100,8 +100,8 @@ DATABASES = {
     'PASSWORD': '1c53481c',
      'HOST': 'eu-cdbr-west-02.cleardb.net',
      #'PORT': '3306',
-#  }
-#}
+ }
+}
 
 
 # Password validation
