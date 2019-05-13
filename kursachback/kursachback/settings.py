@@ -96,22 +96,22 @@ parse.uses_netloc.append('mysql')
 
 DATABASES = {'default': {}} 
 
-try:
-     DATABASES = {
-         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-             'NAME': 'heroku_a6fca33c3cc6106',
-            'ENGINE': 'django.db.backends.mysql',
-            'USER': 'bb04d450dd01d7',
-            'PASSWORD': '1c53481c',
-            'HOST': 'eu-cdbr-west-02.cleardb.net',
+
+     #DATABASES = {
+         #'default': {
+         #   'ENGINE': 'django.db.backends.mysql',
+         #    'NAME': 'heroku_a6fca33c3cc6106',
+         #   'ENGINE': 'django.db.backends.mysql',
+          #  'USER': 'bb04d450dd01d7',
+           # 'PASSWORD': '1c53481c',
+            #'HOST': 'eu-cdbr-west-02.cleardb.net',
      #'PORT': '3306',
-       }
-     }
-except UndefinedValueError:
-     db_from_env = dj_database_url.config()
-     DATABASES['default'].update(db_from_env)
-     DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+       #}
+     #}
+#except UndefinedValueError:
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
