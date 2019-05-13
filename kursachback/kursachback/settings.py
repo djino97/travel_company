@@ -106,6 +106,7 @@ DATABASES = {
 }
 
 DATABASES['default'] = dj_database_url.config()
+print(DATABASES['default'])
 DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
