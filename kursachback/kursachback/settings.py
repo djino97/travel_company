@@ -94,17 +94,17 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 parse.uses_netloc.append('mysql')
 
 DATABASES = {
-   'default': {
-   'ENGINE': 'django.db.backends.mysql',
-   'NAME': 'heroku_a6fca33c3cc6106',
+  # 'default': {
+  # 'ENGINE': 'django.db.backends.mysql',
+  # 'NAME': 'heroku_a6fca33c3cc6106',
    # 'ENGINE': 'django.db.backends.mysql',
-    'USER': 'bb04d450dd01d7',
-    'PASSWORD': '1c53481c',
-     'HOST': 'eu-cdbr-west-02.cleardb.net',
+  #  'USER': 'bb04d450dd01d7',
+  #  'PASSWORD': '1c53481c',
+  #   'HOST': 'eu-cdbr-west-02.cleardb.net',
      #'PORT': '3306',
- }
+# }
 }
-
+DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
