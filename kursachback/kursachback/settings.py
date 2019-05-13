@@ -104,6 +104,7 @@ DATABASES = {
      #'PORT': '3306',
 # }
 }
+DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 DATABASES['default'] = dj_database_url.config()
 
 # Password validation
