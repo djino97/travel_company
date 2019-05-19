@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
          #  'PORT': '3306',
      #  }
     # }
-DATABASES = {'default': dj_database_url.config(default=mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106)}
+DATABASES = {'default': dj_database_url.config(default='mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106')}
 DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #except UndefinedValueError:
 #DATABASES = {'default': dj_database_url.config(default=os.environ["DATABASE_URL"])}
