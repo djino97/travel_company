@@ -92,24 +92,24 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 #DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 #GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
-parse.uses_netloc.append('mysql')
+#parse.uses_netloc.append('mysql')
 
-DATABASES = {'default': {}} 
+#DATABASES = {'default': {}} 
 
 
-     #DATABASES = {
-         #'default': {
-         #   'ENGINE': 'django.db.backends.mysql',
-         #    'NAME': 'heroku_a6fca33c3cc6106',
-         #   'ENGINE': 'django.db.backends.mysql',
-          #  'USER': 'bb04d450dd01d7',
-           # 'PASSWORD': '1c53481c',
-            #'HOST': 'eu-cdbr-west-02.cleardb.net',
+     DATABASES = {
+         'default': {
+           'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'heroku_a6fca33c3cc6106',
+            'ENGINE': 'django.db.backends.mysql',
+            'USER': 'bb04d450dd01d7',
+           'PASSWORD': '1c53481c',
+            'HOST': 'eu-cdbr-west-02.cleardb.net',
      #'PORT': '3306',
-       #}
-     #}
+       }
+     }
 #except UndefinedValueError:
-DATABASES = {'default': dj_database_url.config(default=os.environ["DATABASE_URL"])}
+#DATABASES = {'default': dj_database_url.config(default=os.environ["DATABASE_URL"])}
 #DATABASES['default'].update(db_from_env)
 #DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 # Password validation
