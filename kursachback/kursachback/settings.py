@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 #DATABASE = {'default': dj_database_url.config() }
 #DATABASES['default'] = dj_database_url.config()
-#DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 #GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
 #parse.uses_netloc.append('mysql')
@@ -106,6 +105,7 @@ DATABASES = {
            'PORT': '3306',
        }
      }
+DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #except UndefinedValueError:
 #DATABASES = {'default': dj_database_url.config(default=os.environ["DATABASE_URL"])}
 #DATABASES['default'].update(db_from_env)
