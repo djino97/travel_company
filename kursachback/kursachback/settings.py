@@ -96,8 +96,7 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 #DATABASES = {'default': {}} 
 
-
-     DATABASES = {
+DATABASES = {
          'default': {
            'ENGINE': 'django.db.backends.mysql',
             'NAME': 'heroku_a6fca33c3cc6106',
