@@ -98,7 +98,6 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 DATABASES = {
          'default': {
-           'ENGINE': 'django.db.backends.mysql',
             'NAME': 'heroku_a6fca33c3cc6106',
             'ENGINE': 'django.db.backends.mysql',
             'USER': 'bb04d450dd01d7',
