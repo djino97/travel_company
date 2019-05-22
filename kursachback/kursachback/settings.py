@@ -30,7 +30,7 @@ SECRET_KEY = '9m@xz@mgou3zga))80h+uk2@p3eg-1gn$g0jui)-#o*o4uds3f'
 DEBUG = False
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure().
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
  
 # Allow all host headers.
 ALLOWED_HOSTS = ['*']
