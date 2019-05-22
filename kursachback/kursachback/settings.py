@@ -153,6 +153,7 @@ STATICFILES_FINDERS = (
 ROOT_DIR = os.path.dirname(__file__)
 
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
