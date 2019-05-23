@@ -188,9 +188,10 @@ ul.messages li a.close {
 .catalog{
     display: flex;
     padding-left: 100px;
-    background-color: #f7f7f7;
+    background-color: #efefef;
     margin-bottom: 2%;
     border-radius: 20px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 .block_tour {
     display: flex;
@@ -234,8 +235,20 @@ div#md-date-pane-0.md-datepicker-calendar-pane{left: 705px !important;
     margin-top: 20px;
 }
 
-.submit_tur{
-    margin-left: 5px;
+input.submit_tur{
+    margin-left: 13px;
+    border-radius: 5px;
+    background: #efefef;
+    color: #0c9e35 !important;
+    font-size: 14px !important;
+    padding: 6px 20px !important;
+    border-color: #5f4949c7;
+    border-width: 2.2px;
+
+    }
+
+.submit_tur:hover{
+    background: #bdbdbd;
 }
 select {
     float: right;
