@@ -8,7 +8,7 @@ def load_text(tours_detail):
     return file_content
 
 def load_text_hotel(hotel_detail):
-    f = open(settings.MEDIA_ROOT + '/toursimage/description_hotel/%s' % hotel_detail.description_hotel,
+    f = open(settings.MEDIA_ROOT + 'description_hotel/%s' % hotel_detail.description_hotel,
              'r')
     file_content = f.read()
     f.close()
