@@ -1,7 +1,7 @@
 from kursachback import settings 
 
 def load_text(tours_detail):
-    f = open(settings.MEDIA_ROOT + '/toursimage/description_tour/%s' % tours_detail.description_tour,
+    f = open(settings.MEDIA_ROOT + 'description_tour/%s' % tours_detail.description_tour,
              'r')
     file_content = f.read()
     f.close()
