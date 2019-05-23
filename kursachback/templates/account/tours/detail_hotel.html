@@ -11,7 +11,7 @@
     </div>
     <div style="margin-left: 100px">
         <h1>{{ hotel_detail.nametype }}</h1>
-        <p>Комфортность отеля:{{ hotel_detail.typeofhotel }}</p>
+        <p>Комфортность отеля: {% for st in star %} * {% endfor %} </p>
         <p>Описание отеля:</p>
         {{ file_content|linebreaks }}
     </div>
