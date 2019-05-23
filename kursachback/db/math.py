@@ -1,12 +1,12 @@
 def load_text(tours_detail):
-    f = open(r'C:/PycharmProjects/kursachback/static/toursimage/description_tour/%s' % tours_detail.description_tour,
+    f = open(r'/static/toursimage/description_tour/%s' % tours_detail.description_tour,
              'r')
     file_content = f.read()
     f.close()
     return file_content
 
 def load_text_hotel(hotel_detail):
-    f = open(r'C:/PycharmProjects/kursachback/static/toursimage/description_hotel/%s' % hotel_detail.description_hotel,
+    f = open(r'/static/toursimage/description_hotel/%s' % hotel_detail.description_hotel,
              'r')
     file_content = f.read()
     f.close()
