@@ -100,7 +100,9 @@ def hotel_detali(request, idhotel, slug_hotel):
                                      idhotel=idhotel,
                                      slug_hotel=slug_hotel,)
     file_content = load_text_hotel(hotel_detail)
-    star_hotel = len(hotel_detail.nametype)
+    star_hotel = []
+    for st in hotel_detail.typeofhotel:
+        star_hotel.append(st)
     return render(request,
                   'account/tours/detail_hotel.html', {'hotel_detail': hotel_detail,
                                                       'file_content': file_content, 'star': star_hotel})

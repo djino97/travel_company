@@ -13,3 +13,4 @@ class TourAdmin(admin.ModelAdmin):
 admin.site.register(Tour, TourAdmin)
 
 
+
