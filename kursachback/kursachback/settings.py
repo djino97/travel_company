@@ -95,18 +95,18 @@ WSGI_APPLICATION = 'kursachback.wsgi.application'
 
 #DATABASES = {'default': {}} 
 
-DATABASES = {
-        'default': {
-           'NAME': 'heroku_a6fca33c3cc6106',
-           'ENGINE': 'django.db.backends.mysql',
-            'USER': 'bb04d450dd01d7',
-            'PASSWORD': '1c53481c',
-            'HOST': 'eu-cdbr-west-02.cleardb.net',
-            'PORT': '3306',
-       }
-     }
-#DATABASES = {'default': dj_database_url.config(default='mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106')}
-#DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+#DATABASES = {
+      #  'default': {
+        #   'NAME': 'heroku_a6fca33c3cc6106',
+         #  'ENGINE': 'django.db.backends.mysql',
+         #   'USER': 'bb04d450dd01d7',
+         #   'PASSWORD': '1c53481c',
+          #  'HOST': 'eu-cdbr-west-02.cleardb.net',
+          #  'PORT': '3306',
+      # }
+    # }
+DATABASES = {'default': dj_database_url.config(default='mysql://bb04d450dd01d7:1c53481c@eu-cdbr-west-02.cleardb.net/heroku_a6fca33c3cc6106', conn_max_age=600)}
+DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 #except UndefinedValueError:
 #DATABASES = {'default': dj_database_url.config(default=os.environ["DATABASE_URL"])}
 #DATABASES['default'].update(db_from_env)
