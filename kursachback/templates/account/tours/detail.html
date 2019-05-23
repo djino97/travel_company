@@ -8,9 +8,20 @@
     <div style="display: flex;">
     <div >
         <img style="width: 470px; height: 310px;" src="{% if detail_img %}{{detail_img }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-    </div>}}
+    </div>
+          <div style="margin-left: 100px">
+        <h1>{{ tours_detail.name_tour }}</h1>
+    <p>Маршрут:</p>
+        <div style="display: flex">
+            {% for state in station %}
+                <p>->{{state.nametown.nametown}}</p>
+            {% endfor %}
+        </div>
+        <p class="price">Стоимость тура: {{ route.costofroute }} ₽</p>
+         <form class="cart" action="{% url "cart:cart_add" tours_detail.id_tour %}" method="post">
+         {{ cart_product_form }}
           {% csrf_token %}
-          <input type="submit" value="Добавить в корзину">
+          <input  style="margin-top: 10px;" type="submit" value="Добавить в корзину">
          </form>
     </div>
     </div>
