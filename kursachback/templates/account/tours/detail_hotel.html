@@ -11,7 +11,8 @@
     </div>
     <div style="margin-left: 100px">
         <h1>{{ hotel_detail.nametype }}</h1>
-        <p>Комфортность отеля: {% for st in star %} * {% endfor %} </p>
+        <p>Комфортность отеля: {% for st in star %}
+            <img style="width: 23px; height: 23px;" src="/static/toursimage/image_hotel/star_hotel.png">{% endfor %} </p>
         <p>Описание отеля:</p>
         {{ file_content|linebreaks }}
     </div>
