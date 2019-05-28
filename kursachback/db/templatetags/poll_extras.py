@@ -40,7 +40,10 @@ def cart_img_tour(key):
     return f
 
 
-@register.filter(name='star_hotel')
-def star_hotel(obj, key):
-    f = len(obj[key].typeofhotel) + 1
-    return f
+@register.filter(name='number_hotel')
+def number_hotel(dict_hotel, n):
+    return dict_hotel[n]
+
+@register.filter(name='departure_group')
+def departure_group(depart, key):
+    return depart[key].departuredate
