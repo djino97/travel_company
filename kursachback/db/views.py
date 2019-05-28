@@ -2,13 +2,19 @@ from django.http import HttpResponse
 from django.shortcuts import render, render_to_response,get_object_or_404
 from django.contrib.auth import authenticate, login
 from db.forms import LoginForm, UserRegistrationForm
-from .models import (Tour, Putevka, Route, Station, Routehotel,Hotel)
+from .models import (Tour, Groupp, Route, Station, Routehotel, Hotel)
 from .math import load_text, coast_tours, pars, img_hotel, img_tours, img_tour_detail, search_tour_country, \
     load_text_hotel
 from cart.forms import CartAddTourForm
 
 
 def user_login(request):
+    """
+    Checks whether a user in the database includes,
+    if there is, it display the template login.html
+    :param request: data user information
+    :return: render login.html
+    """
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -28,6 +34,11 @@ def user_login(request):
 
 
 def main(request):
+    """
+    The main page view display the display all the tours and all the hotels
+    :param request: entered user data in the line search
+    :return: issued the requested information or information about all the tours and hotels
+    """
     if request.GET:
         try:
             route_country = 0
@@ -63,19 +74,31 @@ def main(request):
 
     tours = Tour.objects.all()
     img_tour = img_tours(tours)
+    groupp_supply = Groupp.objects.all()
     route = Route.objects.all()
     coast_tour, count = coast_tours(tours, route)
     hotel = Hotel.objects.all()
     image_hotel, count_hotel = img_hotel(hotel)
-    fiew_star = [1, 2, 3, 4, 5]
+    star_hotel_main = {}
+    number_hotel = 0
+    for st in hotel:
+            star_hotel_main[number_hotel] = st.typeofhotel
+            number_hotel += 1
     return render(request, 'account/tours/main.html', {'section': 'main',
                                                        'tours': tours, 'coast_tours': coast_tour,
                                                        'count': count, 'img_tour': img_tour, 'idhotel': hotel,
                                                        'img_hotel': image_hotel, 'count_hotel': count_hotel,
-                                                       'fiew_star': fiew_star})
+                                                       'star_hotel_main': star_hotel_main, 'group': groupp_supply})
 
 
 def tour_detali(request, id_tour, slug):
+    """
+    A view for description of each tour
+    :param request:
+    :param id_tour:
+    :param slug:
+    :return: display the template detail.html with the description of the tour
+    """
     tours_detail = get_object_or_404(Tour,
                                      id_tour=id_tour,
                                      slug=slug,)
@@ -96,6 +119,13 @@ def tour_detali(request, id_tour, slug):
 
 
 def hotel_detali(request, idhotel, slug_hotel):
+    """
+    A view for description of each hotel
+    :param request:
+    :param idhotel:
+    :param slug_hotel:
+    :return: display the template detail_hotel.html with the description of the tour
+    """
     hotel_detail = get_object_or_404(Hotel,
                                      idhotel=idhotel,
                                      slug_hotel=slug_hotel,)
@@ -109,6 +139,12 @@ def hotel_detali(request, idhotel, slug_hotel):
 
 
 def register(request):
+    """
+    Logs the user into the database if all the
+    fields are entered correctly display register_done.html, otherwise register.html
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
