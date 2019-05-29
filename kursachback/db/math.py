@@ -1,12 +1,14 @@
+from kursachback import settings 
+
 def load_text(tours_detail):
-    f = open(r'C:/PycharmProjects/kursachback/static/toursimage/description_tour/%s' % tours_detail.description_tour,
+    f = open(settings.MEDIA_ROOT + 'description_tour/%s' % tours_detail.description_tour,
              'r')
     file_content = f.read()
     f.close()
     return file_content
 
 def load_text_hotel(hotel_detail):
-    f = open(r'C:/PycharmProjects/kursachback/static/toursimage/description_hotel/%s' % hotel_detail.description_hotel,
+    f = open(settings.MEDIA_ROOT + 'description_hotel/%s' % hotel_detail.description_hotel,
              'r')
     file_content = f.read()
     f.close()
@@ -93,4 +95,3 @@ def get_id_hotel_room(id_hotel_room):
     for id_room in id_hotel_room:
         room = id_room.idhotelroom
         return room
-
