@@ -7,6 +7,8 @@ And the frontend part uses slyghtly AngularJS.
 
 ER diagram:  
 
-![alt text](er_diagram)    
+![alt text](er_db.jpg)
+
+  
 Schema relational database:
-![alt text](relation_db)  
+![alt text](relation_db.jpg)  
