@@ -7,5 +7,6 @@ And the frontend part uses slyghtly AngularJS.
 
 ER diagram:  
 
-![alt text](kursachback/static/toursimage/image_tour/1.jpg)  
+![alt text](er_diagram)    
 Schema relational database:
+![alt text](relation_db)  
