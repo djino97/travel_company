@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from db.models import Tour, Route
 from .forms import CartAddTourForm
 from cart.cart import Cart
-from db.models import  Putevka, Hotelroom, Contract, Groupp
+from db.models import Putevka, Hotelroom, Contract, Groupp, Klient
 from .forms import OrderCreateForm
 from django.db.models import Max
 from db.math import get_id_hotel_room
@@ -64,13 +64,15 @@ def order_create(request):
                 if field_putevka['field_pytevki__max'] is not None:
                     id_putevka = field_putevka['field_pytevki__max']
                 id_putevka = id_putevka + 1
+                klient_object = get_object_or_404(Klient, email=request.POST['email'])
+                contract_object = get_object_or_404(Contract, field_contract=id_contract)
                 for group in id_group:
-                   Putevka.objects.create(field_pytevki=id_putevka,
-                                           name_toure=item['tour'].id_tour,
+                    Putevka.objects.create(field_pytevki=id_putevka,
+                                           name_toure=item['tour'],
                                            cost=item['price'],
                                            idhotelroom=id_room,
-                                           email=request.POST['email'],
-                                           field_contract=id_contract,
+                                           email=klient_object,
+                                           field_contract=contract_object,
                                            field_groupp=group.field_groupp,
                                            )
             # очистка корзины
