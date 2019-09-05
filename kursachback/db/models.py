@@ -207,8 +207,7 @@ class Klient(models.Model):
         managed = True
         db_table = 'klient'
 
-    def __str__(self):
-        return 'Klient {}'.format(self.id)
+
 
 
 class Putevka(models.Model):
