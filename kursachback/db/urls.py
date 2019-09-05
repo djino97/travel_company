@@ -16,6 +16,6 @@ urlpatterns = [
     url(r'^$', views.main, name='main'),
     url(r'^account/register/$', views.register, name='register'),
     url(r'^(?P<idhotel>\d+)/(?P<slug_hotel>[-\w]+)/$', views.hotel_detali, name='detail_hotel'),
-    url(r'^detail/(?P<id_tour>\d+)/(?P<slug>[-\w]+)/', views.tour_detali, name='tours_detail'),
+    url(r'^detail/(?P<id_tour>\d+)/(?P<slug>[-\w]+)/', views.tour_detail, name='tours_detail'),
 ]
 
