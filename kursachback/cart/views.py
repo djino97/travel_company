@@ -6,7 +6,7 @@ from cart.cart import Cart
 from db.models import Putevka, Hotelroom, Contract, Groupp, Klient
 from .forms import OrderCreateForm
 from django.db.models import Max
-from db.math import get_id_hotel_room
+from db.calculation import get_id_hotel_room
 import datetime
 
 
