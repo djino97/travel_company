@@ -299,8 +299,8 @@ md-datepicker:hover {
     background: #f5a32c !important;
 }
 div#md-date-pane-0.md-datepicker-calendar-pane {
-    left: 52% !important;
-    top: 34% !important;
+    left: 57% !important;
+    top: 53% !important;
 }
 
 .hotel {
@@ -481,4 +481,8 @@ md-icon {
 
 form.cart {
     line-height: normal !important;
+}
+
+.left_margin_content {
+    margin: 40px 36px 0 36px;
 }
