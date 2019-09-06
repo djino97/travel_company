@@ -3,6 +3,7 @@
 {% block title %}Бронирование тура{% endblock %}
 
 {% block content %}
+    <div class="left_margin_content">
     <h1>Бронирование тура</h1>
     <div class="order-info">
         <h3>Ваш заказ</h3>
@@ -21,4 +22,5 @@
         <p><input type="submit" value="Забронировать"></p>
         {% csrf_token %}
     </form>
+    </div>
 {% endblock %}
