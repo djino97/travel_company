@@ -50,6 +50,7 @@ ol {
 #header .logo {
     font-family: 'Muli', sans-serif;
     float: left;
+    font-weight: bold;
     color: #f3f7cc;
     font-size: 28px;
     margin-right: 10%;
@@ -87,7 +88,7 @@ ol {
 }
 
 #content {
-    padding: 30px 100px;
+    padding: 0;
 }
 
 /* forms */
@@ -247,13 +248,36 @@ ul.messages li a.close {
 .vertical_search {
     display: flex;
     justify-content: center;
+    margin-top: 38px;
+}
+
+.container_for_header_search {
+ height: 200px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+.text_header_search {
+  margin-top: 0px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color:rgb(255, 255, 255);
+}
+
+.background_for_search {
+  height: 600px;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url(image_templates/krit.jpg);
+  background-size: cover;
 }
 
 .search {
     display: flex;
     background-color: #0ac33e;
-    padding: 9px 6px 0 5px;
-    border-radius: 5px;
+    padding: 7px 6px 32px 6px;
+    border-radius: 11px 11px 39px 39px;
     height: 40px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
@@ -275,8 +299,8 @@ md-datepicker:hover {
     background: #f5a32c !important;
 }
 div#md-date-pane-0.md-datepicker-calendar-pane {
-    left: 52% !important;
-    top: 34% !important;
+    left: 57% !important;
+    top: 53% !important;
 }
 
 .hotel {
@@ -350,16 +374,15 @@ th {
     display: flex;
     width: 77px;
     height: 28px;
-    border: 1px solid #a30029;
     margin: auto;
     text-align: center;
     border-radius: 6px;
     box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.3);
-    background: #de9404;
+    background: #f5b048;
     justify-content: center;
     align-items: center;
     font-size: 17px;
-
+    font-weight: bold;
 }
 
 .login a:hover {
@@ -370,9 +393,9 @@ th {
 .registration a {
     display: flex;
     width: 119px;
+    font-weight: bold;
     height: 28px;
-    border: 1px solid #14bfa7;
-    margin: auto;
+    margin: 0 -47px 0 35px;
     text-align: center;
     border-radius: 6px;
     background: #ca1d1d;
@@ -391,12 +414,31 @@ th {
     margin-left: 20px;
 }
 
+.slider_block {
+  background-color: #00e4cd54;
+  padding: 0 29px;
+}
+
+div.slider.slick-initialized.slick-slider.slick-dotted {
+  margin: 0 63px !important;
+  padding-top: 25px;
+}
+
 div.slick-slider {
     margin: 0 63px;
 }
 
+div.slick-list.draggable {
+  padding-left: 21px;
+}
+
+div.slick-track {
+    margin: 18px 0 !important;
+    margin-top: 10px;
+}
+
 .slick-dots li button:before {
-    margin-top: 17px;
+    margin-top: 7px;
     font-size: 12px !important;
 }
 
@@ -406,7 +448,7 @@ div.slick-slider {
 }
 
 .slick-prev:before {
-    margin-left: -47px;
+    margin-left: -27px;
 }
 
 md-icon {
@@ -439,4 +481,8 @@ md-icon {
 
 form.cart {
     line-height: normal !important;
+}
+
+.left_margin_content {
+    margin: 40px 36px 0 36px;
 }
