@@ -8,10 +8,10 @@ PAYMENT = [('Yandex money', 'Yandex money'), ('PayPal', 'PayPal'), ('WebMoney', 
 
 
 class CartAddTourForm(forms.Form):
-    quantity = forms.TypedChoiceField(label='количество', choices=TOURS_QUANTITY_CHOICES, coerce=int)
+    quantity = forms.TypedChoiceField(label='Количество туров', choices=TOURS_QUANTITY_CHOICES, coerce=int)
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
-    hotelroom = forms.TypedChoiceField(label='отель', choices=HOTELROOM_STARS, coerce=int)
-    typeofpayment = forms.TypedChoiceField(label='вид оплаты', choices=PAYMENT, coerce=str)
+    hotelroom = forms.TypedChoiceField(label='Звезда отеля', choices=HOTELROOM_STARS, coerce=int)
+    typeofpayment = forms.TypedChoiceField(label='Вид оплаты', choices=PAYMENT, coerce=str)
 
 
 class OrderCreateForm(forms.ModelForm):
