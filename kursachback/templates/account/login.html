@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
+    <div class="left_margin_content">
     <h1>Вход</h1>
     <p>Пожалуйста, введите ваш логин и пароль:</p>
     <form action="." method="post">
@@ -8,4 +9,5 @@
         {% csrf_token %}
         <p><input type="submit" value="Вход"></p>
     </form>
+    </div>>
 {% endblock %}
