@@ -3,6 +3,7 @@
 {% block title %}Create an account{% endblock %}
 
 {% block content %}
+    <div class="left_margin_content">
     <h1>Создание аккаунта</h1>
     <p>Пожалуйста, введите свои данные:</p>
     <form action="." method="post">
@@ -10,4 +11,5 @@
         {% csrf_token %}
         <p><input type="submit" value="Создать аккаунт"></p>
     </form>
+    </div>>
 {% endblock %}
