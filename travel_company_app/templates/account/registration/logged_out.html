@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Logged out{% endblock %}
+{% block content %}
+    <div class="left_margin_content">
+    <h1>Выход из личного кабинета</h1>
+    <p>Вы успешно вышли из своего личного кабинета. Вы можете <a href="{% url "login" %}">войти</a> в свой кабинет заново.</p>
+    </div>
+{% endblock %}
