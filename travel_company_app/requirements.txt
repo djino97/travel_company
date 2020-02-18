@@ -6,8 +6,6 @@ protobuf==3.6.1
 pytz==2018.7
 six==1.11.0
 Django==1.8
-django-mysql==2.4.1
-mysql-connector-python==8.0.13
 Pillow==2.9.0
 protobuf==3.6.1
 pytz==2018.7
@@ -23,6 +21,4 @@ six==1.11.0
 whitenoise==4.1.2
 dj-database-url==0.5.0
 python-decouple == 3.1
-mysqlclient
-PyMySQL
 django-service-objects
