@@ -120,10 +120,6 @@ class AllTour(Service):
 
         self.hotel_stars = star_hotel_main
 
-    @classmethod
-    def __get_instance(cls):
-        return cls
-
 
 class TourDetail(Service):
     tour_detail = ModelChoiceField(queryset=Tour.objects.all())
