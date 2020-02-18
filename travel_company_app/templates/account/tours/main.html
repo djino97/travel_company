@@ -11,8 +11,8 @@
         </div>
         <div class="vertical_search">
             <form ng-controller="AppCtrl" class="search" action="." method="get">
-                <input type="search" placeholder="Страна" name="country">
-                <input type="search" placeholder="Сезон" name="season">
+                <input type="search" placeholder="Страна: Италия" name="country">
+                <input type="search" placeholder="Сезон: Лето" name="season">
                 <md-datepicker ng-model="myDate" ng-click="eventClass()" md-hide-icons="triangle"
                                md-placeholder="Enter date"></md-datepicker>
                 <input type="search" placeholder="Дата отправления" ng-model="myDate|date:'yyyy-MM-dd'" name="date">
