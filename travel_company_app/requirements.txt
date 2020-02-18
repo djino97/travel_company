@@ -25,3 +25,4 @@ dj-database-url==0.5.0
 python-decouple == 3.1
 mysqlclient
 PyMySQL
+django-service-objects
