@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/basestile.css" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div ng-app="MyApp" ng-controller="dialogShow">
+    <div id="header">
+        <span class="logo">Турфирма</span>
+        {% if request.user.is_authenticated %}
+            <ul class="menu">
+                <li {% if section == 'main' %}class="selected"{% endif %}>
+                    <a href="{% url 'main' %}">
+                        {% if section == 'main' %}
+                            Главная
+                        {% else %}
+                            На главную!
+                        {% endif %}
+                    </a>
+            </ul>
+        {% else %}
+            <ul class="menu">
+                <li {% if section == 'main' %}class="selected"{% endif %}>
+                    <a href="{% url 'main' %}">
+                        {% if section == 'main' %}
+                            Главная
+                        {% else %}
+                            На главную!
+                        {% endif %}
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
+        <span class="user">
+        {% if request.user.is_authenticated %}
+               <span class="cart">
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    Ваша корзина:
+                    <a href="{% url "cart:cart_detail" %}">
+                          {{ total_items }}
+                        {% if total_items > 1 %}
+                            тура
+                        {% else %}
+                            тур
+                        {% endif %},
+
+                           {{ cart.get_total_price }}₽
+                            </a>
+                {% else %}
+                    У вас нет заказов
+                {% endif %}
+            {% endwith %}
+            </span>
+
+             <md-menu ng-controller="accountCtrl" class="md_menu">
+            <md-button ng-click="openMenu($mdMenu, $event)"
+                       class="md-fab md-mini md-primary md-button md-ink-ripple">
+                <md-icon md-font-set="material-icons">perm_identity</md-icon>
+            </md-button>
+            <md-menu-content width="1" style="height: 160px; width: 220px">
+                <p style="text-align: center; line-height: 0">Добро пожаловать {{ request.user.first_name }}!</p>
+                <p class="menu_content">Вы успешно вошли в свой кабинет, теперь вы можете приступить к бронированию туров с комфортом</p>
+                <div style="align-items: center">
+                    <md-menu-item>
+                        <a href="{% url 'logout' %}"><md-button class="md-primary" style="margin-left: 50px">Выход</md-button></a>
+                    </md-menu-item>
+                </div>
+            </md-menu-content>
+            </md-menu>
+        {% else %}
+            <md-menu ng-controller="accountCtrl" class="md_menu">
+            <md-button ng-click="openMenu($mdMenu, $event)"
+                       class="md-fab md-mini md-primary md-button md-ink-ripple">
+                <md-icon md-font-set="material-icons">perm_identity</md-icon>
+            </md-button>
+            <md-menu-content width="2" style="height: 220px; width: 220px">
+                <p style="text-align: center; line-height: 0">Добро пожаловать!</p>
+                <p class="menu_content">Любой клиент нашего туристического агенства имеет доступ к своему личному кабинету.
+                    Войдите или зарегистрируйтесь, чтобы получить доступ к вашим персональным данным. </p>
+                <div style="align-items: center">
+                    <md-menu-item>
+                        <a href="{% url 'login' %}"><md-button class="md-primary" style="margin-left: 50px">Вход</md-button></a>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <a href="{% url 'register' %}"> <md-button class="md-primary" style="margin-left: 36px">Регистрация</md-button></a>
+                    </md-menu-item>
+                </div>
+            </md-menu-content>
+            </md-menu>
+        {% endif %}
+        </span>
+    </div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-resource.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-messages.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+<script type="text/javascript" src="{% static "js/main.js" %}"></script>
+<script type="text/javascript" src="{% static "js/dialogWindow.js" %}"></script>
+</body>
+</html>
