@@ -1,10 +1,10 @@
-Django==1.8
+Django==1.11.28
 mysqlclient
 Pillow==2.9.0
 protobuf==3.6.1
 pytz==2018.7
 six==1.11.0
-Django==1.8
+Django==1.11.28
 Pillow==2.9.0
 protobuf==3.6.1
 pytz==2018.7
