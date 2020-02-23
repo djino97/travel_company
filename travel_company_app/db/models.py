@@ -70,12 +70,9 @@ class AuthUserUserPermissions(models.Model):
 
 
 class Contract(models.Model):
-    field_contract = models.IntegerField(db_column='№Contract',
-                                         primary_key=True)
-    dateofconclusion = models.DateField(db_column='DateOfConclusion', blank=True,
-                                        null=True)
-    typeofpayment = models.CharField(db_column='TypeOfPayment', max_length=255, blank=True,
-                                     null=True)
+    field_contract = models.IntegerField(db_column='№Contract', primary_key=True)
+    date_of_conclusion = models.DateField(db_column='DateOfConclusion', blank=True, null=True)
+    type_of_payment = models.CharField(db_column='TypeOfPayment', max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -83,7 +80,7 @@ class Contract(models.Model):
 
 
 class CountryTable(models.Model):
-    namecountry = models.CharField(db_column='NameCountry', primary_key=True, max_length=255)
+    name_country = models.CharField(db_column='NameCountry', primary_key=True, max_length=255)
 
     class Meta:
         managed = True
@@ -135,11 +132,11 @@ class DjangoSession(models.Model):
 
 
 class Excursion(models.Model):
-    nameexcursion = models.CharField(db_column='NameExcursion', max_length=255, blank=True, null=True)
-    timestart = models.TimeField(db_column='TimeStart', blank=True, null=True)
+    name_excursion = models.CharField(db_column='NameExcursion', max_length=255, blank=True, null=True)
+    time_start = models.TimeField(db_column='TimeStart', blank=True, null=True)
     duration = models.TimeField(db_column='Duration', blank=True, null=True)
-    idexcursion = models.IntegerField(db_column='IDExcursion', primary_key=True)
-    nametown = models.ForeignKey('Town', db_column='NameTown', max_length=255, blank=True)
+    id_excursion = models.IntegerField(db_column='IDExcursion', primary_key=True)
+    name_town = models.ForeignKey('Town', db_column='NameTown', max_length=255, blank=True)
     image_excursion = models.ImageField(db_column='image_excursion', upload_to='image_excursion/')
     slug_excursion = models.SlugField(max_length=200, db_index=True)
     description_excursion = models.FileField(db_column='desc_excursion', upload_to='description_excursion/', blank=True)
@@ -151,7 +148,7 @@ class Excursion(models.Model):
 
 class Groupp(models.Model):
     field_groupp = models.IntegerField(db_column='№Groupp', primary_key=True)
-    departuredate = models.DateField(db_column='DepartureDate', blank=True, null=True)
+    departure_date = models.DateField(db_column='DepartureDate', blank=True, null=True)
     field_route = models.ForeignKey('Route', db_column='№Route', blank=True, null=True)
 
     class Meta:
@@ -160,10 +157,10 @@ class Groupp(models.Model):
 
 
 class Hotel(models.Model):
-    idhotel = models.IntegerField(db_column='IDHotel', primary_key=True)
-    typeofhotel = models.CharField(db_column='TypeOfHotel', max_length=255, blank=True, null=True)
-    nametype = models.CharField(db_column='NameType', max_length=255, blank=True, null=True)
-    durationresidence = models.IntegerField(db_column='DurationResidence', blank=True, null=True)
+    id_hotel = models.IntegerField(db_column='IDHotel', primary_key=True)
+    type_of_hotel = models.CharField(db_column='TypeOfHotel', max_length=255, blank=True, null=True)
+    name_type = models.CharField(db_column='NameType', max_length=255, blank=True, null=True)
+    duration_residence = models.IntegerField(db_column='DurationResidence', blank=True, null=True)
     image_hotel = models.ImageField(db_column='image_hotel', upload_to='image_hotel/')
     slug_hotel = models.SlugField(max_length=200, db_index=True)
     description_hotel = models.FileField(db_column='desc_hotel', upload_to='description_hotel/', blank=True)
@@ -174,13 +171,13 @@ class Hotel(models.Model):
 
     def get_absolute_url(self):
         return reverse('hotel:detail_hotel',
-                       args=[self.idhotel])
+                       args=[self.id_hotel])
 
 
 class Hotelroom(models.Model):
-    idhotelroom = models.IntegerField(db_column='IDHotelRoom', primary_key=True)
-    typehotelroom = models.CharField(db_column='TypeHotelRoom', max_length=255, blank=True, null=True)
-    idhotel = models.ForeignKey('Hotel', db_column='IDHotel', blank=True, null=True)
+    id_hotel_room = models.IntegerField(db_column='IDHotelRoom', primary_key=True)
+    type_hotel_room = models.CharField(db_column='TypeHotelRoom', max_length=255, blank=True, null=True)
+    id_hotel = models.ForeignKey('Hotel', db_column='IDHotel', blank=True, null=True)
 
 
     class Meta:
@@ -190,7 +187,7 @@ class Hotelroom(models.Model):
 
 class Klient(models.Model):
     fio = models.CharField(db_column='FIO', max_length=255, blank=True, null=True)
-    dateofbirth = models.DateField(db_column='Dateofbirth', blank=True, null=True)
+    date_of_birth = models.DateField(db_column='Dateofbirth', blank=True, null=True)
     email = models.CharField(db_column='EMail', primary_key=True, max_length=255)
     address = models.CharField(db_column='Address', max_length=255, blank=True, null=True)
     phone = models.BigIntegerField(db_column='Phone', blank=True, null=True)
@@ -202,11 +199,11 @@ class Klient(models.Model):
 
 class Putevka(models.Model):
     field_pytevki = models.IntegerField(db_column='№Pytevki', primary_key=True)
-    name_toure = models.ForeignKey('Tour', db_column='NameTour')
+    name_tour = models.ForeignKey('Tour', db_column='NameTour')
     cost = models.DecimalField(db_column='Cost', max_digits=15, decimal_places=2, blank=True, null=True)
     email = models.ForeignKey('Klient', db_column='EMail', max_length=255, blank=True, null=True)
     field_contract = models.ForeignKey('Contract', db_column='№Contract', blank=True, null=True)
-    idhotelroom = models.IntegerField(db_column='IDHotelRoom', blank=True, null=True)
+    id_hotel_room = models.IntegerField(db_column='IDHotelRoom', blank=True, null=True)
     field_groupp = models.IntegerField(db_column='№Groupp', blank=True, null=True)
 
     class Meta:
@@ -214,11 +211,11 @@ class Putevka(models.Model):
         db_table = 'putevka'
 
     def __str__(self):
-        return 'Putevka {}'.format(self.name_toure)
+        return 'Putevka {}'.format(self.name_tour)
 
 
 class Putevkaexcursion(models.Model):
-    idexcursion = models.ForeignKey('Excursion', db_column='IDExcursion', blank=True, )
+    id_excursion = models.ForeignKey('Excursion', db_column='IDExcursion', blank=True, )
     field_putevka = models.ForeignKey('Putevka', db_column='№Putevka', blank=True)
 
     class Meta:
@@ -247,13 +244,13 @@ class Tour(models.Model):
 
 class Route(models.Model):
     field_route = models.IntegerField(db_column='№Route', primary_key=True)
-    name_toure = models.ForeignKey('Tour', db_column='NameTour')
-    costofroute = models.DecimalField(db_column='CostOfRoute', max_digits=15, decimal_places=2, blank=True, null=True)
-    durationofroute = models.IntegerField(db_column='DurationOfRoute', blank=True, null=True)
+    name_tour = models.ForeignKey('Tour', db_column='NameTour')
+    cost_of_route = models.DecimalField(db_column='CostOfRoute', max_digits=15, decimal_places=2, blank=True, null=True)
+    duration_of_route = models.IntegerField(db_column='DurationOfRoute', blank=True, null=True)
     season = models.CharField(db_column='Season', max_length=255, blank=True, null=True)
-    minquantitypeople = models.IntegerField(db_column='MinQuantityPeople', blank=True, null=True)
-    maxquantitypeople = models.IntegerField(db_column='MaxQuantityPeople', blank=True, null=True)
-    insuranceamount = models.DecimalField(db_column='InsuranceAmount', max_digits=15, decimal_places=2, blank=True, null=True)
+    min_quantity_people = models.IntegerField(db_column='MinQuantityPeople', blank=True, null=True)
+    max_quantity_people = models.IntegerField(db_column='MaxQuantityPeople', blank=True, null=True)
+    insurance_amount = models.DecimalField(db_column='InsuranceAmount', max_digits=15, decimal_places=2, blank=True, null=True)
     image_route = models.ImageField(db_column='image_route', upload_to='image_route/')
     slug_route = models.SlugField(max_length=200, db_index=True)
     description_route = models.FileField(db_column='desc_route', upload_to='description_route/', blank=True)
@@ -265,7 +262,7 @@ class Route(models.Model):
 
 class Routehotel(models.Model):
     field_route = models.ForeignKey('Route', db_column='№Route', blank=True, null=True)
-    idhotel = models.ForeignKey('Hotel', db_column='IDHotel', blank=True, null=True)
+    id_hotel = models.ForeignKey('Hotel', db_column='IDHotel', blank=True, null=True)
 
     class Meta:
         managed = True
@@ -273,11 +270,11 @@ class Routehotel(models.Model):
 
 
 class Station(models.Model):
-    numberstation = models.IntegerField(db_column='NumberStation', primary_key=True)
+    number_station = models.IntegerField(db_column='NumberStation', primary_key=True)
     field_route = models.ForeignKey('Route', db_column='№Route', blank=True, null=True)
 
-    durationtimeresidence = models.CharField(db_column='DurationTimeResidence', max_length=255, blank=True, null=True)
-    nametown = models.ForeignKey('Town', db_column='NameTown', max_length=255, blank=True, null=True)
+    duration_time_residence = models.CharField(db_column='DurationTimeResidence', max_length=255, blank=True, null=True)
+    name_town = models.ForeignKey('Town', db_column='NameTown', max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -285,8 +282,8 @@ class Station(models.Model):
 
 
 class Town(models.Model):
-    nametown = models.CharField(db_column='NameTown', primary_key=True, max_length=255)
-    namecountry = models.ForeignKey('CountryTable', db_column='NameCountry', max_length=255, blank=True, null=True)
+    name_town = models.CharField(db_column='NameTown', primary_key=True, max_length=255)
+    name_country = models.ForeignKey('CountryTable', db_column='NameCountry', max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
