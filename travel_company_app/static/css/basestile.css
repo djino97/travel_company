@@ -304,7 +304,7 @@ md-datepicker:hover {
     box-shadow: none !important;
     background: #f5a32c !important;
 }
-div#md-date-pane-1text_header_search.md-datepicker-calendar-pane {
+div#md-date-pane-1.text_header_search.md-datepicker-calendar-pane {
     left: 57% !important;
     top: 53% !important;
 }
