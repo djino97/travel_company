@@ -7,16 +7,16 @@ class HotelImgParser:
         self.file_content = []
         self.count = []
 
-    def __get_hotels_img_by_number(self, hotel_key, number_hotel):
-        f = '/static/toursimage/image_hotel/%s' % number_hotel.image_hotel
-        self.count.append(hotel_key)
-        self.file_content.append(f)
-
     def get_hotel_count_and_image(self, hotel):
         for key, i in enumerate(hotel):
             self.__get_hotels_img_by_number(key, i)
 
         return self.file_content, self.count
+    
+    def __get_hotels_img_by_number(self, hotel_key, number_hotel):
+        f = '/static/toursimage/image_hotel/%s' % number_hotel.image_hotel
+        self.count.append(hotel_key)
+        self.file_content.append(f)
 
 
 class TourParser:
