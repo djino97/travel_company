@@ -12,7 +12,7 @@ class HotelImgParser:
         self.count.append(hotel_key)
         self.file_content.append(f)
 
-    def get_number_hotel(self, hotel):
+    def get_hotel_count_and_image(self, hotel):
         for key, i in enumerate(hotel):
             self.__get_hotels_img_by_number(key, i)
 
@@ -27,47 +27,47 @@ class TourParser:
         self.tmp_a = 0
         self.tour = tour
 
-    def search_and_adding_coincide_tours(self, route_key, tour_key, tour, route):
-        if route_key != 1:
-            self.count_tours.append(tour_key)
-        if route.name_toure.id_tour == tour.id_tour:
-            self.tmp_a = self.tmp_a + route.costofroute
-
-    def parsing_tours_and_routes(self, tours, routes):
-        for route_key, route in enumerate(routes):
-            for key, tour in enumerate(tours):
-                self.search_and_adding_coincide_tours(route_key, key, tour, route)
-            if self.tmp_a != 0:
-                self.cost.append(self.tmp_a)
-                self.tmp_a = 0
-
-    def adding_in_the_list_new_route(self, route):
-        self.count_tours.append(0)
-        a = + route.costofroute
-        self.cost.append(a)
-
-    def parsing_routes(self, routes):
-        for route in routes:
-            self.adding_in_the_list_new_route(route)
-
-    def adding_in_the_list_new_cost_tour(self, route):
-        a = + route.costofroute
-        self.cost.append(a)
-        self.count_tours.append(0)
-
     def get_cost_tours(self, tours, routes):
         if len(routes) > 1 and len(tours) > 1:
-            self.parsing_tours_and_routes(tours, routes)
+            self.__parsing_tours_and_routes(tours, routes)
             return [self.cost, self.count_tours]
 
         elif len(routes) > 1:
-            self.parsing_routes(routes)
+            self.__parsing_routes(routes)
             return [self.cost, self.count_tours]
 
         else:
             for route in routes:
-                self.adding_in_the_list_new_cost_tour(route)
+                self.__adding_in_the_list_new_cost_tour(route)
             return [self.cost, self.count_tours]
+
+    def __parsing_tours_and_routes(self, tours, routes):
+        for route in routes:
+            for key, tour in enumerate(tours):
+                self.search_and_adding_coincide_tours(key, tour, route)
+            if self.tmp_a != 0:
+                self.cost.append(self.tmp_a)
+                self.tmp_a = 0
+
+    def search_and_adding_coincide_tours(self, tour_key, tour, route):
+
+        if route.name_tour.id_tour == tour.id_tour:
+            self.tmp_a = self.tmp_a + route.cost_of_route
+            self.count_tours.append(tour_key)
+
+    def __parsing_routes(self, routes):
+        for route in routes:
+            self.__adding_in_the_list_new_route(route)
+
+    def __adding_in_the_list_new_route(self, route):
+        self.count_tours.append(0)
+        a = + route.costofroute
+        self.cost.append(a)
+
+    def __adding_in_the_list_new_cost_tour(self, route):
+        a = + route.costofroute
+        self.cost.append(a)
+        self.count_tours.append(0)
 
 
 class ImageTour:
